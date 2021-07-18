@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="THINGY.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bad_open0000" x="2" y="2" width="856" height="234"/>
+	<SubTexture name="bad_open0001" x="860" y="2" width="856" height="234"/>
+	<SubTexture name="bad_open0002" x="2" y="238" width="856" height="234"/>
+	<SubTexture name="bad_open0003" x="860" y="238" width="856" height="234"/>
+	<SubTexture name="bad_open0004" x="2" y="474" width="856" height="234"/>
+	<SubTexture name="bad_static0000" x="860" y="474" width="856" height="239"/>
+</TextureAtlas>

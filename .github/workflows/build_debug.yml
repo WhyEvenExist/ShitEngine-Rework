@@ -1,0 +1,74 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Build Debug
+
+# Controls when the action will run. 
+on: 
+  push:
+  pull_request:
+  
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  Windows:
+    runs-on: windows-latest
+    
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - uses: krdlab/setup-haxe@master
+        with:
+          haxe-version: 4.1.5
+      # Runs a set of commands using the runners shell
+      - name: Set up stuff
+        uses: styfle/cancel-workflow-action@0.9.0
+        with:
+          access_token: ${{ github.token }}
+      - name: Install Haxelib
+        run: |
+          haxelib setup C:/haxelib
+          haxelib install hxcpp > nul
+          haxelib install lime
+          haxelib install openfl
+          haxelib --never install flixel
+          haxelib run lime setup flixel
+          haxelib run lime setup
+          haxelib install flixel-tools
+          haxelib install flixel-ui
+          haxelib git flixel-addons https://github.com/HaxeFlixel/flixel-addons
+          haxelib install newgrounds
+          haxelib git polymod https://github.com/larsiusprime/polymod.git
+          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
+          haxelib install hxcpp-debug-server
+          haxelib git djFlixel https://github.com/john32b/djFlixel
+          haxelib install actuate
+          haxelib git extension-webm https://github.com/GrowtopiaFli/extension-webm
+          haxelib git systools https://github.com/haya3218/systools
+          haxelib list
+        shell: cmd
+      - name: Rebuild extension-webm
+        run: haxelib run lime rebuild extension-webm windows
+      - name: Rebuild systools
+        run: haxelib run lime rebuild systools windows
+      - name: Compile
+        run: haxelib run lime build windows -debug
+      - name: Archive
+        run: tar -czf bin.tar.gz export/debug/windows/bin
+      - name: Clean up stuff + set tags for release
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      - name: Release file
+        # You may pin to the exact commit or the version.
+        # uses: djnicholson/release-action@e9a535b3eced09c460e07a84118fb74ae9b53236
+        uses: djnicholson/release-action@v2.10
+        with:
+          # GitHub auth token
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Name of Release to add file to
+          release-name: Latest build
+          # Name of the tag for the release (will be associated with current branch)
+          tag-name: v0.1-${{ steps.vars.outputs.sha_short }}
+          # Name for the asset
+          asset-name: CelesteXFNF_nightly.tar.gz
+          # File to release
+          file: bin.tar.gz
