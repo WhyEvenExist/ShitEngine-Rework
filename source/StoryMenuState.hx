@@ -22,7 +22,7 @@ class StoryMenuState extends MusicBeatState
 {
 	var scoreText:FlxText;
 
-	var weekData:Array<Dynamic> = [['Test'], ['Roses']];
+	var weekData:Array<Dynamic> = [['Test'], ['Roses', 'AMONGUS-VS-AMOGUS']];
 	var curDifficulty:Int = 1;
 
 	public static var weekUnlocked:Array<Bool> = [true, true];

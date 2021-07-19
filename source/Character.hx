@@ -308,6 +308,48 @@ class Character extends FlxSprite
 			// setGraphicSize(Std.int(width * 2));
 			// y += height * 2;
 
+			case 'amogus':
+				var tex = Paths.getSparrowAtlas('characters/amogus', 'shared');
+				frames = tex;
+				animation.addByPrefix('idle', 'BF idle dance', 24, false);
+				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
+				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
+				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
+				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
+				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
+				animation.addByPrefix('hey', 'BF HEY', 24, false);
+
+				animation.addByPrefix('firstDeath', "BF dies", 24, false);
+				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
+				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
+
+				animation.addByPrefix('scared', 'BF idle shaking', 24);
+
+				addOffset('idle');
+				addOffset("singUP", -100, 60);
+				addOffset("singRIGHT");
+				addOffset("singLEFT");
+				addOffset("singDOWN", -230, -220);
+				addOffset("singUPmiss");
+				addOffset("singRIGHTmiss");
+				addOffset("singLEFTmiss");
+				addOffset("singDOWNmiss");
+				addOffset("hey", -233, -49);
+				addOffset('firstDeath', 60, 196);
+				addOffset('deathLoop');
+				addOffset('deathConfirm', 77, 69);
+				addOffset('scared');
+
+				playAnim('idle');
+
+				flipX = true;
+
+			// setGraphicSize(Std.int(width * 2));
+			// y += height * 2;
+
 			case 'bf-christmas':
 				var tex = Paths.getSparrowAtlas('characters/bfChristmas', 'shared');
 				frames = tex;
@@ -433,7 +475,10 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 			case 'senpai-angry':
-				frames = Paths.getSparrowAtlas('characters/senpai', 'shared');
+				if (PlayState.SONG.song.toUpperCase() != 'AMONGUS-VS-AMOGUS')
+					frames = Paths.getSparrowAtlas('characters/senpai', 'shared');
+				else
+					frames = Paths.getSparrowAtlas('characters/fefe', 'shared');
 				animation.addByPrefix('idle', 'Angry Senpai Idle', 24, false);
 				animation.addByPrefix('singUP', 'Angry Senpai UP NOTE', 24, false);
 				animation.addByPrefix('singLEFT', 'Angry Senpai LEFT NOTE', 24, false);
@@ -509,7 +554,7 @@ class Character extends FlxSprite
 			flipX = !flipX;
 
 			// Doesn't flip for BF, since his are already in the right place???
-			if (!curCharacter.startsWith('bf'))
+			if (!curCharacter.startsWith('bf') && !curCharacter.startsWith('amogus'))
 			{
 				// var animArray
 				var oldRight = animation.getByName('singRIGHT').frames;

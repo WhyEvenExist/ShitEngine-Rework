@@ -350,7 +350,7 @@ class PlayState extends MusicBeatState
 					add(skyBG);
 
 					var bgLimo:FlxSprite = new FlxSprite(-200, 480);
-					bgLimo.frames = Paths.getSparrowAtlas('limo/bgLimo');
+					bgLimo.frames = Paths.getSparrowAtlas('limo/bgLimo', 'week4');
 					bgLimo.animation.addByPrefix('drive', "background limo pink", 24);
 					bgLimo.animation.play('drive');
 					bgLimo.scrollFactor.set(0.4, 0.4);
@@ -376,7 +376,7 @@ class PlayState extends MusicBeatState
 
 					// overlayShit.shader = shaderBullshit;
 
-					var limoTex = Paths.getSparrowAtlas('limo/limoDrive');
+					var limoTex = Paths.getSparrowAtlas('limo/limoDrive', 'week4');
 
 					limo = new FlxSprite(-120, 550);
 					limo.frames = limoTex;
@@ -592,6 +592,17 @@ class PlayState extends MusicBeatState
 						add(waveSpriteFG);
 					 */
 				}
+			case 'amongus-vs-amogus':
+				{
+					defaultCamZoom = 0.9;
+					curStage = 'amog';
+					var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('imposters', 'shared'));
+					bg.antialiasing = true;
+					bg.scrollFactor.set(0.9, 0.9);
+					bg.active = false;
+					bg.setGraphicSize(Std.int(bg.width * 1.1));
+					add(bg);
+				}
 			default:
 				{
 					defaultCamZoom = 0.9;
@@ -685,6 +696,15 @@ class PlayState extends MusicBeatState
 
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
 
+		switch (SONG.player1)
+		{
+			case 'bf-pixel':
+				boyfriend.x += 200;
+				boyfriend.y += 220;
+			case 'amogus':
+				boyfriend.y -= 100;
+		}
+
 		// REPOSITIONING PER STAGE
 		switch (curStage)
 		{
@@ -702,8 +722,6 @@ class PlayState extends MusicBeatState
 				boyfriend.x += 320;
 				dad.y -= 80;
 			case 'school':
-				boyfriend.x += 200;
-				boyfriend.y += 220;
 				gf.x += 180;
 				gf.y += 300;
 			case 'schoolEvil':
@@ -913,7 +931,7 @@ class PlayState extends MusicBeatState
 		red.scrollFactor.set();
 
 		var senpaiEvil:FlxSprite = new FlxSprite();
-		senpaiEvil.frames = Paths.getSparrowAtlas('weeb/senpaiCrazy');
+		senpaiEvil.frames = Paths.getSparrowAtlas('weeb/senpaiCrazy', 'week6');
 		senpaiEvil.animation.addByPrefix('idle', 'Senpai Pre Explosion', 24, false);
 		senpaiEvil.setGraphicSize(Std.int(senpaiEvil.width * 6));
 		senpaiEvil.scrollFactor.set();
@@ -1428,7 +1446,7 @@ class PlayState extends MusicBeatState
 			switch (curStage)
 			{
 				case 'school' | 'schoolEvil':
-					babyArrow.loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels'), true, 17, 17);
+					babyArrow.loadGraphic(Paths.image('weeb/pixelUI/arrows-pixels', 'week6'), true, 17, 17);
 					babyArrow.animation.add('green', [6]);
 					babyArrow.animation.add('red', [7]);
 					babyArrow.animation.add('blue', [5]);
@@ -2153,7 +2171,14 @@ class PlayState extends MusicBeatState
 			pixelShitPart2 = '-pixel';
 		}
 
-		rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2));
+		var thing:String = "shared";
+
+		if (pixelShitPart1 != "")
+		{
+			thing = 'week6';
+		}
+
+		rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2, thing));
 		rating.screenCenter();
 		rating.x = coolText.x - 40;
 		rating.y -= 60;
@@ -2161,7 +2186,7 @@ class PlayState extends MusicBeatState
 		rating.velocity.y -= FlxG.random.int(140, 175);
 		rating.velocity.x -= FlxG.random.int(0, 10);
 
-		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
+		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2, thing));
 		comboSpr.screenCenter();
 		comboSpr.x = coolText.x;
 		comboSpr.acceleration.y = 600;
@@ -2206,9 +2231,15 @@ class PlayState extends MusicBeatState
 		}
 
 		var daLoop:Int = 0;
+		var thing:String = "preload";
+
+		if (pixelShitPart1 != "")
+		{
+			thing = 'week6';
+		}
 		for (i in seperatedScore)
 		{
-			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + pixelShitPart2));
+			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + pixelShitPart2, thing));
 			numScore.screenCenter();
 			numScore.x = coolText.x + (43 * daLoop) - 90;
 			numScore.y += 80;
@@ -2386,7 +2417,7 @@ class PlayState extends MusicBeatState
 					}
 				}
 			}
-			else if (FlxG.save.data.antiSpam)
+			else if (FlxG.save.data.antiSpam && possibleNotes.length < 0)
 			{
 				for (shit in 0...pressArray.length)
 				{ // if a direction is hit that shouldn't be
@@ -2661,10 +2692,6 @@ class PlayState extends MusicBeatState
 			}
 			// else
 			// Conductor.changeBPM(SONG.bpm);
-
-			// Dad doesnt interupt his own notes
-			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection)
-				dad.dance();
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
 		wiggleShit.update(Conductor.crochet);
@@ -2695,7 +2722,18 @@ class PlayState extends MusicBeatState
 
 		if (!boyfriend.animation.curAnim.name.startsWith("sing"))
 		{
-			boyfriend.playAnim('idle');
+			if (boyfriend.curCharacter != 'amogus')
+				boyfriend.playAnim('idle');
+			else
+				boyfriend.playAnim('idle', true);
+		}
+
+		if (!dad.animation.curAnim.name.startsWith("sing"))
+		{
+			if (dad.curCharacter != 'spooky')
+				dad.playAnim('idle');
+			else
+				dad.playAnim('idle', true);
 		}
 
 		if (curBeat % 8 == 7 && curSong == 'Bopeebo')

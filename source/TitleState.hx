@@ -276,6 +276,7 @@ class TitleState extends MusicBeatState
 			#end
 
 			titleText.animation.play('press');
+			titleText.updateHitbox();
 			titleText.screenCenter(X);
 			// titleText.x += FlxG.width / 2;
 			FlxG.camera.flash(FlxColor.WHITE, 1);
