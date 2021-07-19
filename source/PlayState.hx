@@ -2325,6 +2325,8 @@ class PlayState extends MusicBeatState
 		}
 	}
 
+	var canNoMiss:Array<Bool> = [false, false, false, false];
+
 	private function keyShit():Void // I've invested in emma stocks
 	{
 		var holdArray:Array<Bool> = keysHold;
@@ -2351,6 +2353,8 @@ class PlayState extends MusicBeatState
 
 			notes.forEachAlive(function(daNote:Note)
 			{
+				// canNoMiss[daNote.noteData] = pressArray[daNote.noteData];
+
 				if (daNote.canBeHit && daNote.mustPress && !daNote.tooLate && !daNote.wasGoodHit)
 				{
 					if (directionList.contains(daNote.noteData))
@@ -2401,13 +2405,15 @@ class PlayState extends MusicBeatState
 				goodNoteHit(possibleNotes[0]);
 			else if (possibleNotes.length > 0)
 			{
-				/* This causes too many problems
+				if (FlxG.save.data.antiSpam)
+				{
 					for (shit in 0...pressArray.length)
 					{ // if a direction is hit that shouldn't be
 						if (pressArray[shit] && !directionList.contains(shit))
 							noteMiss(shit);
 					}
-				 */
+				}
+
 				for (coolNote in possibleNotes)
 				{
 					if (pressArray[coolNote.noteData])
@@ -2415,14 +2421,6 @@ class PlayState extends MusicBeatState
 						scoreTxt.color = FlxColor.WHITE;
 						goodNoteHit(coolNote);
 					}
-				}
-			}
-			else if (FlxG.save.data.antiSpam && possibleNotes.length < 0)
-			{
-				for (shit in 0...pressArray.length)
-				{ // if a direction is hit that shouldn't be
-					if (pressArray[shit] && !directionList.contains(shit))
-						noteMiss(shit);
 				}
 			}
 		}
