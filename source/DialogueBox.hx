@@ -302,11 +302,11 @@ class UsefulBox extends FlxSpriteGroup
 		this.dialogueList = dialogueList;
 		this.dialogueEffects = dialogueEffects;
 
-		var shit = FileSystem.readDirectory('assets/sounds/dialogue/madeline/C');
+		var shit = FileSystem.readDirectory('assets/sounds/dialogue/');
 		FlxG.log.add(shit);
 		for (i in 0...shit.length)
 		{
-			var funny:FlxSound = new FlxSound().loadEmbedded(Paths.sound('dialogue/madeline/C/' + shit[i].replace('.ogg', '')));
+			var funny:FlxSound = new FlxSound().loadEmbedded(Paths.sound('dialogue/' + shit[i].replace('.ogg', '')));
 			dSounds.push(funny);
 		}
 	}

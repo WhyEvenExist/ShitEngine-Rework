@@ -1,5 +1,7 @@
 package;
 
+import openfl.media.Sound;
+import flixel.util.FlxTimer;
 #if desktop
 import Discord.DiscordClient;
 #end
@@ -33,6 +35,7 @@ class MainMenuState extends MusicBeatState
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
+	var canSelect:Bool = false;
 
 	override function create()
 	{
@@ -48,6 +51,7 @@ class MainMenuState extends MusicBeatState
 		{
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
+		canSelect = false;
 
 		clearCache();
 
@@ -55,7 +59,7 @@ class MainMenuState extends MusicBeatState
 
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		bg.scrollFactor.x = 0;
-		bg.scrollFactor.y = 0.18;
+		bg.scrollFactor.y = 0.08;
 		bg.setGraphicSize(Std.int(bg.width * 1.1));
 		bg.updateHitbox();
 		bg.screenCenter();
@@ -67,7 +71,7 @@ class MainMenuState extends MusicBeatState
 
 		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
 		magenta.scrollFactor.x = 0;
-		magenta.scrollFactor.y = 0.18;
+		magenta.scrollFactor.y = 0.08;
 		magenta.setGraphicSize(Std.int(magenta.width * 1.1));
 		magenta.updateHitbox();
 		magenta.screenCenter();
@@ -103,9 +107,13 @@ class MainMenuState extends MusicBeatState
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 
-		// NG.core.calls.event.logEvent('swag').send();
-
 		changeItem();
+
+		if (FlxG.random.bool(1))
+		{
+			menuItems.members[2].setGraphicSize(Std.int(menuItems.members[2].width * 5));
+			menuItems.members[2].updateHitbox();
+		}
 
 		super.create();
 	}
@@ -142,11 +150,9 @@ class MainMenuState extends MusicBeatState
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
-					#if linux
-					Sys.command('/usr/bin/xdg-open', ["https://ninja-muffin24.itch.io/funkin", "&"]);
-					#else
-					FlxG.openURL('https://ninja-muffin24.itch.io/funkin');
-					#end
+					// makes it so it'll not die when you get out of a menu
+					var fard:Sound = Sound.fromFile(Paths.sound('fart'));
+					fard.play();
 				}
 				else
 				{
@@ -172,7 +178,6 @@ class MainMenuState extends MusicBeatState
 							FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
 							{
 								var daChoice:String = optionShit[curSelected];
-
 								switch (daChoice)
 								{
 									case 'story mode':
