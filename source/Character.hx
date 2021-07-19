@@ -308,51 +308,6 @@ class Character extends FlxSprite
 			// setGraphicSize(Std.int(width * 2));
 			// y += height * 2;
 
-			case 'madeline':
-				var tex = Paths.getSparrowAtlas('characters/madeline', 'shared');
-				frames = tex;
-				animation.addByPrefix('idle', 'idle0', 24, false);
-				animation.addByPrefix('singUP', 'up0', 24, false);
-				animation.addByPrefix('singLEFT', 'RIGHT0', 24, false);
-				animation.addByPrefix('singRIGHT', 'left0', 24, false);
-				animation.addByPrefix('singDOWN', 'down0', 24, false);
-				animation.addByPrefix('singUPmiss', 'up miss0', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'RIGHT miss0', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'left miss0', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'down miss0', 24, false);
-				animation.addByPrefix('hey', 'up0', 24, false);
-
-				animation.addByPrefix('firstDeath', "nothing", 24, false);
-				animation.addByPrefix('deathLoop', "nothing", 24, true);
-				animation.addByPrefix('deathConfirm', "nothing", 24, false);
-
-				animation.addByPrefix('scared', 'nothing', 24);
-				animation.addByPrefix('nothing', 'nothing', 24);
-
-				addOffset('idle', 13, 69);
-				addOffset('nothing');
-				addOffset("singUP", -9, 87);
-				addOffset("singRIGHT", 72, 44);
-				addOffset("singLEFT", 72, 44);
-				addOffset("singDOWN", 10, 35);
-
-				flipX = true;
-
-				addOffset("singUPmiss", -9, 58);
-				addOffset("singRIGHTmiss", -30, 38);
-				addOffset("singLEFTmiss", 82, 64);
-				addOffset("singDOWNmiss", 19, 48);
-				addOffset("hey", -9, 87);
-				addOffset('firstDeath');
-				addOffset('deathLoop');
-				addOffset('deathConfirm');
-				addOffset('scared');
-
-				playAnim('idle');
-
-			// setGraphicSize(Std.int(width * 2));
-			// y += height * 2;
-
 			case 'bf-christmas':
 				var tex = Paths.getSparrowAtlas('characters/bfChristmas', 'shared');
 				frames = tex;
