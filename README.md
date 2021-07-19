@@ -2,8 +2,7 @@
 THE SAME ENGINE THAT POWERS YOUR MOM
 
 # Credits
-ninjamuffin99, PhantomArcade, evilsk8r, and kawaisprite
-- for making a great game :)
+ninjamuffin99, PhantomArcade, evilsk8r, and kawaisprite - for making a great game :)
 
 KadeDev - basis for some stuff in the engine
 
