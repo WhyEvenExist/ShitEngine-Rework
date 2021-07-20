@@ -44,6 +44,8 @@ class TitleState extends MusicBeatState
 
 	var wackyImage:FlxSprite;
 
+	public static var curTheme:String = "";
+
 	override public function create():Void
 	{
 		#if polymod
@@ -57,6 +59,8 @@ class TitleState extends MusicBeatState
 		// DEBUG BULLSHIT
 
 		super.create();
+
+		curTheme = "default"; // debugging theme purposes
 
 		// NGio.noLogin(APIStuff.API);
 
