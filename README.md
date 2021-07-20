@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://github.com/WhyEvenExist/ShitEngine-Rework/raw/master/art/leLogo.png" alt="Build Status"><img src="https://github.com/WhyEvenExist/ShitEngine-Rework/raw/master/art/leLogo.png"></a>
+<a href="https://github.com/WhyEvenExist/ShitEngine-Rework/raw/master/art/lelogo.png" alt="Build Status"><img src="https://github.com/WhyEvenExist/ShitEngine-Rework/raw/master/art/lelogo.png"></a>
 </p>
 
 # SHIT ENGINE: Reloaded to the power of #
