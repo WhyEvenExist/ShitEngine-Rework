@@ -1,5 +1,9 @@
-# SHIT ENGINE
-THE SAME ENGINE THAT POWERS YOUR MOM
+<p align="center">
+<a href="https://github.com/WhyEvenExist/ShitEngine-Rework/raw/master/art/leLogo.png" alt="Build Status"><img src="https://github.com/WhyEvenExist/ShitEngine-Rework/raw/master/art/leLogo.png"></a>
+</p>
+
+# SHIT ENGINE: Reloaded to the power of #
+Basically shit engine 2.0 or Chaos 3.0.
 
 # Credits
 ninjamuffin99, PhantomArcade, evilsk8r, and kawaisprite - for making a great game :)
