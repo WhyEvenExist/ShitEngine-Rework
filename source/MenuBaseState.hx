@@ -1,5 +1,6 @@
 package;
 
+import openfl.text.TextField;
 import openfl.utils.ByteArray;
 import openfl.display.BitmapData;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -102,6 +103,7 @@ class MenuBaseState extends MusicBeatState
 		themeCode.variables.set("FlxTween", FlxTween);
 		themeCode.variables.set("FlxEase", FlxEase);
 		themeCode.variables.set("FlxText", FlxText);
+		themeCode.variables.set("TextField", TextField);
 		themeCode.variables.set("Alphabet", Alphabet);
 		themeCode.variables.set("FlxEmitter", FlxEmitter);
 		themeCode.variables.set("FlxParticle", FlxParticle);
@@ -109,5 +111,6 @@ class MenuBaseState extends MusicBeatState
 		themeCode.variables.set("menu", this);
 		themeCode.variables.set("FlxCamera", FlxCamera);
 		themeCode.variables.set("FlxTypedGroup", FlxTypedGroup);
+		themeCode.variables.set("add", add);
 	}
 }

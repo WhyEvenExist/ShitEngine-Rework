@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="amongus.png">
+	<!-- Created with Adobe Flash Professional version 13.0.0.759 -->
+	<!-- http://www.adobe.com/products/flash.html -->
+	<SubTexture name="among DOWN0000" x="0" y="0" width="742" height="974"/>
+	<SubTexture name="among DOWN0001" x="0" y="0" width="742" height="974"/>
+	<SubTexture name="among DOWN0002" x="742" y="0" width="742" height="974"/>
+	<SubTexture name="among DOWN0003" x="742" y="0" width="742" height="974"/>
+	<SubTexture name="among DOWN0004" x="742" y="0" width="742" height="974"/>
+	<SubTexture name="among DOWN0005" x="742" y="0" width="742" height="974"/>
+	<SubTexture name="among DOWN0006" x="742" y="0" width="742" height="974"/>
+	<SubTexture name="among DOWN0007" x="742" y="0" width="742" height="974"/>
+	<SubTexture name="among DOWN0008" x="742" y="0" width="742" height="974"/>
+	<SubTexture name="among DOWN0009" x="742" y="0" width="742" height="974"/>
+	<SubTexture name="among DOWN0010" x="742" y="0" width="742" height="974"/>
+	<SubTexture name="among DOWN0011" x="742" y="0" width="742" height="974"/>
+	<SubTexture name="among DOWN0012" x="742" y="0" width="742" height="974"/>
+	<SubTexture name="among DOWN0013" x="742" y="0" width="742" height="974"/>
+	<SubTexture name="among DOWN0014" x="0" y="0" width="742" height="974"/>
+	<SubTexture name="among DOWN0015" x="0" y="0" width="742" height="974"/>
+	<SubTexture name="among RIGHT0000" x="1484" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0001" x="1484" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0002" x="2234" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0003" x="2234" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0004" x="2234" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0005" x="2234" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0006" x="2234" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0007" x="2234" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0008" x="2234" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0009" x="2234" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0010" x="2234" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0011" x="2234" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0012" x="2234" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0013" x="2234" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0014" x="1484" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0015" x="1484" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0016" x="2234" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0017" x="2234" y="0" width="750" height="986"/>
+	<SubTexture name="among RIGHT0018" x="2234" y="0" width="750" height="986"/>
+	<SubTexture name="among UP0000" x="2984" y="0" width="730" height="958"/>
+	<SubTexture name="among UP0001" x="2984" y="0" width="730" height="958"/>
+	<SubTexture name="among UP0002" x="0" y="986" width="724" height="950" frameX="-4" frameY="-5" frameWidth="730" frameHeight="958"/>
+	<SubTexture name="among UP0003" x="0" y="986" width="724" height="950" frameX="-4" frameY="-5" frameWidth="730" frameHeight="958"/>
+	<SubTexture name="among UP0004" x="0" y="986" width="724" height="950" frameX="-4" frameY="-5" frameWidth="730" frameHeight="958"/>
+	<SubTexture name="among UP0005" x="0" y="986" width="724" height="950" frameX="-4" frameY="-5" frameWidth="730" frameHeight="958"/>
+	<SubTexture name="among UP0006" x="0" y="986" width="724" height="950" frameX="-4" frameY="-5" frameWidth="730" frameHeight="958"/>
+	<SubTexture name="among UP0007" x="0" y="986" width="724" height="950" frameX="-4" frameY="-5" frameWidth="730" frameHeight="958"/>
+	<SubTexture name="among UP0008" x="0" y="986" width="724" height="950" frameX="-4" frameY="-5" frameWidth="730" frameHeight="958"/>
+	<SubTexture name="among UP0009" x="0" y="986" width="724" height="950" frameX="-4" frameY="-5" frameWidth="730" frameHeight="958"/>
+	<SubTexture name="among UP0010" x="0" y="986" width="724" height="950" frameX="-4" frameY="-5" frameWidth="730" frameHeight="958"/>
+	<SubTexture name="among UP0011" x="0" y="986" width="724" height="950" frameX="-4" frameY="-5" frameWidth="730" frameHeight="958"/>
+	<SubTexture name="among UP0012" x="0" y="986" width="724" height="950" frameX="-4" frameY="-5" frameWidth="730" frameHeight="958"/>
+	<SubTexture name="among UP0013" x="0" y="986" width="724" height="950" frameX="-4" frameY="-5" frameWidth="730" frameHeight="958"/>
+	<SubTexture name="among idle0000" x="724" y="986" width="734" height="966"/>
+	<SubTexture name="among idle0001" x="724" y="986" width="734" height="966"/>
+	<SubTexture name="among idle0002" x="1458" y="986" width="734" height="966"/>
+	<SubTexture name="among idle0003" x="1458" y="986" width="734" height="966"/>
+	<SubTexture name="among idle0004" x="2192" y="986" width="734" height="966"/>
+	<SubTexture name="among idle0005" x="2192" y="986" width="734" height="966"/>
+	<SubTexture name="among idle0006" x="2926" y="986" width="734" height="966"/>
+	<SubTexture name="among idle0007" x="2926" y="986" width="734" height="966"/>
+	<SubTexture name="among idle0008" x="0" y="1952" width="734" height="966"/>
+	<SubTexture name="among idle0009" x="0" y="1952" width="734" height="966"/>
+	<SubTexture name="among idle0010" x="0" y="1952" width="734" height="966"/>
+	<SubTexture name="among idle0011" x="0" y="1952" width="734" height="966"/>
+	<SubTexture name="among idle0012" x="0" y="1952" width="734" height="966"/>
+	<SubTexture name="among left0000" x="734" y="1952" width="732" height="962"/>
+	<SubTexture name="among left0001" x="734" y="1952" width="732" height="962"/>
+	<SubTexture name="among left0002" x="1466" y="1952" width="732" height="962"/>
+	<SubTexture name="among left0003" x="1466" y="1952" width="732" height="962"/>
+	<SubTexture name="among left0004" x="1466" y="1952" width="732" height="962"/>
+	<SubTexture name="among left0005" x="1466" y="1952" width="732" height="962"/>
+	<SubTexture name="among left0006" x="1466" y="1952" width="732" height="962"/>
+	<SubTexture name="among left0007" x="1466" y="1952" width="732" height="962"/>
+	<SubTexture name="among left0008" x="1466" y="1952" width="732" height="962"/>
+	<SubTexture name="among left0009" x="1466" y="1952" width="732" height="962"/>
+	<SubTexture name="among left0010" x="1466" y="1952" width="732" height="962"/>
+	<SubTexture name="among left0011" x="1466" y="1952" width="732" height="962"/>
+	<SubTexture name="among left0012" x="1466" y="1952" width="732" height="962"/>
+	<SubTexture name="among left0013" x="1466" y="1952" width="732" height="962"/>
+	<SubTexture name="among left0014" x="734" y="1952" width="732" height="962"/>
+	<SubTexture name="among left0015" x="734" y="1952" width="732" height="962"/>
+</TextureAtlas>

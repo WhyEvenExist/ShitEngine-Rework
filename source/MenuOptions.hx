@@ -33,7 +33,7 @@ class MenuOptions extends MenuBaseState
 		// var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		controlsStrings = coolStringFile((FlxG.save.data.fullScreen ? 'Fullscreen' : 'Windowed') + "\n"
 			+ (FlxG.save.data.antiSpam ? "FNF Mode" : "DDR Mode") + "\n" + (FlxG.save.data.downScroll ? 'Downscroll' : 'Upscroll') + "\n"
-			+ (FlxG.save.data.keyInputs ? 'Raw Input' : 'Warm Input') + "\nControls" + "\nNote colors");
+			+ (FlxG.save.data.keyInputs ? 'Raw Input' : 'Warm Input') + "\nControls" + "\nNote colors" + "\nWebm player");
 
 		trace(controlsStrings);
 
@@ -80,9 +80,7 @@ class MenuOptions extends MenuBaseState
 
 		if (controls.ACCEPT)
 		{
-			if (curSelected != 4)
-				grpControls.remove(grpControls.members[curSelected]);
-			if (curSelected != 5)
+			if (curSelected < 4)
 				grpControls.remove(grpControls.members[curSelected]);
 			switch (curSelected)
 			{
@@ -118,6 +116,9 @@ class MenuOptions extends MenuBaseState
 				case 5:
 					trace('switch');
 					FlxG.switchState(new NotesSubstate());
+				case 6:
+					trace('switch');
+					FlxG.switchState(new VideoState('paint', new MenuOptions(), -1, true));
 			}
 		}
 		FlxG.save.flush();

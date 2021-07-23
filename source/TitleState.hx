@@ -1,5 +1,6 @@
 package;
 
+import polymod.Polymod.PolymodError;
 #if desktop
 import Discord.DiscordClient;
 import sys.thread.Thread;
@@ -48,8 +49,35 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
+		var assetMap:Map<String, String> = new Map<String, String>();
+		var shitass:Array<String> = [
+			'shared',
+			'week1',
+			'week2',
+			'week3',
+			'week4',
+			'week5',
+			'week6',
+			'tutorial',
+			'songs'
+		];
+		for (i in 0...shitass.length)
+		{
+			assetMap.set(shitass[i], shitass[i]);
+		}
+
+		var errors = (error:PolymodError) ->
+		{
+			FlxG.log.add(error.severity + ": " + error.code + " - " + error.message + " ORIGIN: " + error.origin);
+		};
+
 		#if polymod
-		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
+		polymod.Polymod.init({
+			modRoot: "mods",
+			dirs: ['introMod'],
+			frameworkParams: {assetLibraryPaths: assetMap},
+			errorCallback: errors
+		});
 		#end
 
 		// PlayerSettings.init();

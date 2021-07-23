@@ -2,6 +2,8 @@ package;
 
 import flixel.FlxSprite;
 
+using StringTools;
+
 class HealthIcon extends FlxSprite
 {
 	/**
@@ -15,9 +17,12 @@ class HealthIcon extends FlxSprite
 		loadGraphic(Paths.image('iconGrid'), true, 150, 150);
 
 		antialiasing = true;
-		animation.add('madeline', [0, 1], 0, false, isPlayer);
-		animation.add('badeline', [2, 3], 0, false, isPlayer);
+		animation.add('hidden1', [0, 1], 0, false, isPlayer);
+		animation.add('hidden2', [2, 3], 0, false, isPlayer);
 		animation.add('sus', [4, 5], 0, false, isPlayer);
+		animation.add('senpai-angry', [6, 7], 0, false, isPlayer);
+		animation.add('amogus', [8, 9], 0, false, isPlayer);
+
 		if (animation.getByName(char) != null)
 			animation.play(char);
 		else

@@ -1,5 +1,7 @@
 package;
 
+import sys.thread.Thread;
+import flixel.FlxBasic;
 import Conductor.BPMChangeEvent;
 import flixel.FlxG;
 import flixel.addons.transition.FlxTransitionableState;
@@ -7,6 +9,7 @@ import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxRect;
 import flixel.util.FlxTimer;
 import openfl.Assets;
+import lime.utils.Assets as LimeAssets;
 
 class MusicBeatState extends FlxUIState
 {
@@ -25,6 +28,8 @@ class MusicBeatState extends FlxUIState
 		if (transIn != null)
 			trace('reg ' + transIn.region);
 
+		clearCache();
+
 		super.create();
 	}
 
@@ -35,6 +40,7 @@ class MusicBeatState extends FlxUIState
 
 		updateCurStep();
 		updateBeat();
+		// clearCache();
 
 		if (oldStep != curStep && curStep > 0)
 			stepHit();
@@ -81,6 +87,18 @@ class MusicBeatState extends FlxUIState
 	{
 		// Clears ALL cache in memory. Saves quite some memory mhm? :Mhm:
 		// Slower loading times in favor of performance
-		Assets.cache.clear();
+		// Assets.cache.clear('*.png');
+		Assets.cache.clear('assets/');
+		LimeAssets.cache.clear('assets/');
+	}
+
+	override function add(Object:FlxBasic):FlxBasic
+	{
+		return super.add(Object);
+	}
+
+	override function remove(Object:FlxBasic, Splice:Bool = false):FlxBasic
+	{
+		return super.remove(Object, Splice);
 	}
 }

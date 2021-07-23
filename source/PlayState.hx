@@ -1,5 +1,6 @@
 package;
 
+import haxe.display.Protocol.NoData;
 import openfl.utils.Timer;
 import flixel.input.keyboard.FlxKey;
 import openfl.ui.KeyLocation;
@@ -54,6 +55,7 @@ using StringTools;
 
 class PlayState extends MusicBeatState
 {
+	public static var instance:PlayState = null;
 	public static var curStage:String = '';
 	public static var SONG:SwagSong;
 	public static var isStoryMode:Bool = false;
@@ -172,9 +174,11 @@ class PlayState extends MusicBeatState
 	var keysHold = [false, false, false, false];
 	var keysRelease = [false, false, false, false];
 
+	var trackedAssets:Array<FlxBasic> = [];
+
 	override public function create()
 	{
-		clearCache();
+		instance = this;
 		keys = [false, false, false, false];
 		keysHold = [false, false, false, false];
 		keysRelease = [false, false, false, false];
@@ -685,9 +689,18 @@ class PlayState extends MusicBeatState
 				dad.y += 360;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'senpai-angry':
-				dad.x += 150;
-				dad.y += 360;
-				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
+				if (SONG.song.toLowerCase() != 'amongus-vs-amogus')
+				{
+					dad.x += 150;
+					dad.y += 360;
+					camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
+				}
+				else
+				{
+					dad.x -= 100;
+					dad.y -= 130;
+					camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
+				}
 			case 'spirit':
 				dad.x -= 150;
 				dad.y += 100;
@@ -725,19 +738,20 @@ class PlayState extends MusicBeatState
 				gf.x += 180;
 				gf.y += 300;
 			case 'schoolEvil':
-				// trailArea.scrollFactor.set();
-
-				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
-				// evilTrail.changeValuesEnabled(false, false, false, false);
-				// evilTrail.changeGraphic()
-				add(evilTrail);
-				// evilTrail.scrollFactor.set(1.1, 1.1);
-
 				boyfriend.x += 200;
 				boyfriend.y += 220;
 				gf.x += 180;
 				gf.y += 300;
 		}
+
+		// trailArea.scrollFactor.set();
+
+		var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
+		var fastTrail = new FlxTrail(boyfriend, null, 4, 24, 0.3, 0.069);
+		var gfTrail = new FlxTrail(gf, null, 4, 24, 0.3, 0.069);
+
+		if (SONG.song.toLowerCase() == 'mc-mental-at-his-best')
+			add(gfTrail);
 
 		add(gf);
 
@@ -745,7 +759,14 @@ class PlayState extends MusicBeatState
 		if (curStage == 'limo')
 			add(limo);
 
+		if (curStage == 'schoolEvil' || SONG.song.toLowerCase() == 'mc-mental-at-his-best')
+			add(evilTrail);
+
 		add(dad);
+
+		if (SONG.song.toLowerCase() == 'mc-mental-at-his-best')
+			add(fastTrail);
+
 		add(boyfriend);
 
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
@@ -908,8 +929,8 @@ class PlayState extends MusicBeatState
 		{
 			switch (curSong.toLowerCase())
 			{
-				case 'tutorial':
-					add(doof2);
+				// case 'tutorial':
+				// add(doof2);
 				default:
 					startCountdown();
 			}
@@ -1812,8 +1833,15 @@ class PlayState extends MusicBeatState
 						camFollow.y = dad.getMidpoint().y - 430;
 						camFollow.x = dad.getMidpoint().x - 100;
 					case 'senpai-angry':
-						camFollow.y = dad.getMidpoint().y - 430;
-						camFollow.x = dad.getMidpoint().x - 100;
+						if (SONG.song.toLowerCase() != 'amongus-vs-amogus')
+						{
+							camFollow.y = dad.getMidpoint().y - 430;
+							camFollow.x = dad.getMidpoint().x - 100;
+						}
+						else
+						{
+							camFollow.y = dad.getMidpoint().y + 50;
+						}
 				}
 
 				if (dad.curCharacter == 'mom')
@@ -1914,6 +1942,8 @@ class PlayState extends MusicBeatState
 
 			vocals.stop();
 			FlxG.sound.music.stop();
+
+			unloadAssets();
 
 			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
@@ -2058,6 +2088,7 @@ class PlayState extends MusicBeatState
 				transIn = FlxTransitionableState.defaultTransIn;
 				transOut = FlxTransitionableState.defaultTransOut;
 
+				unloadAssets();
 				FlxG.switchState(new StoryMenuState());
 
 				// if ()
@@ -2103,12 +2134,16 @@ class PlayState extends MusicBeatState
 				PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
 				FlxG.sound.music.stop();
 
+				clearCache();
+				unloadAssets();
 				LoadingState.loadAndSwitchState(new PlayState());
 			}
 		}
 		else
 		{
 			trace('WENT BACK TO FREEPLAY??');
+			clearCache();
+			unloadAssets();
 			FlxG.switchState(new FreeplayState());
 		}
 	}
@@ -2790,6 +2825,20 @@ class PlayState extends MusicBeatState
 		if (isHalloween && FlxG.random.bool(10) && curBeat > lightningStrikeBeat + lightningOffset)
 		{
 			lightningStrikeShit();
+		}
+	}
+
+	override function add(Object:FlxBasic):FlxBasic
+	{
+		trackedAssets.insert(trackedAssets.length, Object);
+		return super.add(Object);
+	}
+
+	public function unloadAssets():Void
+	{
+		for (asset in trackedAssets)
+		{
+			remove(asset);
 		}
 	}
 

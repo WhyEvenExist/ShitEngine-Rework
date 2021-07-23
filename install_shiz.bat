@@ -7,7 +7,7 @@ haxelib install flixel-tools
 haxelib install flixel-ui
 haxelib git flixel-addons https://github.com/HaxeFlixel/flixel-addons
 haxelib install newgrounds
-haxelib git polymod https://github.com/larsiusprime/polymod.git
+haxelib git polymod https://github.com/larsiusprime/polymod funkinfixes
 haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
 haxelib install hxcpp-debug-server
 haxelib git djFlixel https://github.com/john32b/djFlixel

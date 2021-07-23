@@ -1,5 +1,6 @@
 package;
 
+import openfl.utils.AssetLibrary;
 import OutdatedSubState.PiracyState;
 import flixel.FlxG;
 import flixel.FlxGame;
@@ -96,11 +97,7 @@ class Main extends Sprite
 		addChild(fps);
 		#end
 
-		fps.visible = false;
-
-		#if polymod
-		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
-		#end
+		fps.visible = true;
 
 		PlayerSettings.init();
 
@@ -125,6 +122,15 @@ class Main extends Sprite
 			Discord.DiscordClient.shutdown();
 		});
 		#end
+
+		var debugText = new TextField();
+		debugText.defaultTextFormat = new TextFormat("_sans", 12, 0xFFFFFF);
+		debugText.width = 150;
+		debugText.height = 70;
+		debugText.text = 'DEBUG BUILD -- FEATURES NOT FINAL';
+		debugText.x = Lib.application.window.width - 10 - debugText.width;
+		debugText.y = Lib.application.window.height - 10 - debugText.height;
+		addChild(debugText);
 	}
 
 	public function fpsShow(yeh:Bool)
@@ -185,7 +191,7 @@ class FPSMem extends TextField
 
 		if (visible)
 		{
-			text = "FPS: " + times.length + "\nMEM: " + mem + " MB\nMEM peak: " + memPeak + " MB";
+			text = "FPS: " + times.length + "\nMEM: " + mem + " MB\nMEM peak: " + memPeak + " MB\nOS: " + Sys.systemName();
 		}
 	}
 }

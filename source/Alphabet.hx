@@ -25,6 +25,7 @@ class Alphabet extends FlxSpriteGroup
 	public var xAdd:Float = 0;
 	public var yAdd:Float = 0;
 	public var isMenuItem:Bool = false;
+	public var isFreeplay:Bool = false;
 	public var textSize:Float = 1.0;
 
 	public var text:String = "";
@@ -363,6 +364,20 @@ class Alphabet extends FlxSpriteGroup
 			{
 				x = FlxMath.lerp(x, (targetY * 20) + 90 + xAdd, lerpVal);
 			}
+		}
+		else if (isFreeplay)
+		{
+			// verwex type shit
+			var scaledY = FlxMath.remapToRange(targetY, 0, 1, 0, 1.3);
+
+			y = FlxMath.lerp(y, (scaledY * 90) + (FlxG.height * 0.45), 0.16);
+
+			x = FlxMath.lerp(x, Math.exp(scaledY * 0.8) * -70 + (FlxG.width * 0.35), 0.16);
+			if (scaledY < 0)
+				x = FlxMath.lerp(x, Math.exp(scaledY * -0.8) * -70 + (FlxG.width * 0.35), 0.16);
+
+			if (x < -900)
+				x = -900;
 		}
 
 		super.update(elapsed);

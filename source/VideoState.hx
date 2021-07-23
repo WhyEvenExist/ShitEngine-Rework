@@ -154,11 +154,11 @@ class VideoState extends MusicBeatState
 		add(funnySprite);
 		add(txt2);
 
-		var overlay = new FlxSprite().loadGraphic(Paths.image('titlescreen/overlay'));
+		// var overlay = new FlxSprite().loadGraphic(Paths.image('titlescreen/overlay'));
 		// overlay.setGraphicSize(FlxG.width, FlxG.height);
-		overlay.screenCenter();
-		add(overlay);
-		overlay.y -= 200;
+		// overlay.screenCenter();
+		// add(overlay);
+		// overlay.y -= 200;
 
 		// FlxTween.tween(overlay, {y: 0}, 1, {startDelay: 1});
 		// FlxTween.tween(overlay, {y: overlay.y - 100}, 1, {startDelay: 5});
@@ -247,7 +247,7 @@ class VideoState extends MusicBeatState
 			File.copy('assets/videos/_backup/paint.ogg', 'assets/videos/paint.ogg');
 			FlxTransitionableState.skipNextTransIn = true;
 			FlxTransitionableState.skipNextTransOut = true;
-			FlxG.switchState(new VideoState(file, new MainMenuState()));
+			FlxG.switchState(new VideoState(file, transClass, -1, true));
 		}
 
 		if (GlobalVideo.get().ended)
@@ -257,7 +257,7 @@ class VideoState extends MusicBeatState
 			// File.copy('assets/videos/_backup/paint.ogg', 'assets/videos/paint.ogg');
 			FlxTransitionableState.skipNextTransIn = true;
 			FlxTransitionableState.skipNextTransOut = true;
-			FlxG.switchState(new VideoState(file, new MainMenuState()));
+			FlxG.switchState(new VideoState(file, transClass, -1, true));
 		}
 
 		if (FlxG.keys.justPressed.E)
@@ -374,7 +374,7 @@ class VideoState extends MusicBeatState
 
 			FlxTransitionableState.skipNextTransIn = true;
 			FlxTransitionableState.skipNextTransOut = true;
-			FlxG.switchState(new VideoState(file, new MainMenuState()));
+			FlxG.switchState(new VideoState(file, transClass, -1, true));
 		}
 	}
 }

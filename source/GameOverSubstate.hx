@@ -26,6 +26,8 @@ class GameOverSubstate extends MusicBeatSubstate
 			case 'schoolEvil':
 				stageSuffix = '-pixel';
 				daBf = 'bf-pixel-dead';
+			case 'amog':
+				daBf = 'amogus';
 			default:
 				daBf = 'bf';
 		}
@@ -63,6 +65,9 @@ class GameOverSubstate extends MusicBeatSubstate
 		if (controls.BACK)
 		{
 			FlxG.sound.music.stop();
+
+			remove(camFollow);
+			remove(bf);
 
 			if (PlayState.isStoryMode)
 				FlxG.switchState(new StoryMenuState());
@@ -107,6 +112,9 @@ class GameOverSubstate extends MusicBeatSubstate
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()
 				{
+					remove(camFollow);
+					remove(bf);
+
 					LoadingState.loadAndSwitchState(new PlayState());
 				});
 			});
